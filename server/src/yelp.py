@@ -46,6 +46,12 @@ class YelpApiWrapper(object):
         yelp_businesses = self.request_yelp_search(param)['businesses']
 
         for business in yelp_businesses:
+            if not business.has_key('snippet_image_url'):
+                business['snippet_image_url'] = 'http://rearviewcamera.net/crv/images/noimage.gif'
+
+            if not business.has_key('url'):
+                business['url'] = 'URL NOT FOUND'
+
             data = Data(
                 instance_id=1,
                 name=business['name'],
@@ -59,6 +65,7 @@ class YelpApiWrapper(object):
                 reason='float(n_comments) / 10000.0',
                 genre='Yelp Restaurant'
             )
+
             data.put()
 
 
@@ -69,4 +76,4 @@ if __name__ == '__main__':
         os.getenv('YELP_TOKEN'),
         os.getenv('YELP_TOKEN_SECRET'))
 
-    yelp.yelp_geo_search_and_elastic_search_put(42.24, -83.61)
+    yelp.yelp_geo_search_and_elastic_search_put(35.6585, 139.7013)
