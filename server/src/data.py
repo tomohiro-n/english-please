@@ -1,22 +1,21 @@
 "Documentation"
 
 import logging
+import random
 from elasticsearch import Elasticsearch
 from datetime import datetime
 
-# ES_HOST_NAME = '52.4.196.153'
-# ES_PORT = 9200
-# ES_INDEX = 'testtest1'
-
-ES_HOST_NAME = 'localhost'
-ES_PORT = 9200
-ES_INDEX = 'testtest1'
-ES_TYPE = 'test1'
-
+ES_INDEX = 'ep_venues'
+ES_TYPE = 'venue'
 
 # Returns dummy data for testing ES manipulation
 def dummy_obj(name):
-    a = Data(1, name, [34.994401, 135.783283], 'http://docs.python.jp/2/tutorial/interpreter.html', 'http://blog-imgs-19.fc2.com/d/e/v/devenirherbe/saiboku_buta.jpg', 9.9,
+    rx = random.random() / 500
+    ry = random.random() / 500
+    a = Data(1, name, [35.6585 + rx, 139.7013 + ry],
+             'http://docs.python.jp/2/tutorial/interpreter.html',
+             'http://blog-imgs-19.fc2.com/d/e/v/devenirherbe/saiboku_buta.jpg',
+             random.random(),
              'Sugoi kara', 'Washoku Resutoran')
     return a
 
@@ -41,7 +40,10 @@ class Data(object):
 
     def put(self):
         print 'a'
-        es = Elasticsearch()
+        es = Elasticsearch([
+            # {'host': 'localhost'},
+            {'host': '52.4.196.153', 'port': 9200},
+            ])
         print 'a'
         es.indices.create(index=ES_INDEX, ignore=400)
         es.index(index=ES_INDEX, doc_type=ES_TYPE, body=self.__dict__)
