@@ -16,7 +16,7 @@ ES_TYPE = 'test1'
 
 # Returns dummy data for testing ES manipulation
 def dummy_obj(name):
-    a = Data(1, name, 'geo', 'http://docs.python.jp/2/tutorial/interpreter.html', 'http://blog-imgs-19.fc2.com/d/e/v/devenirherbe/saiboku_buta.jpg', 9.9,
+    a = Data(1, name, [34.994401, 135.783283], 'http://docs.python.jp/2/tutorial/interpreter.html', 'http://blog-imgs-19.fc2.com/d/e/v/devenirherbe/saiboku_buta.jpg', 9.9,
              'Sugoi kara', 'Washoku Resutoran')
     return a
 
