@@ -31,6 +31,17 @@
 		<h3 class="text-muted">English Please!</h3>
 	</div>
 
+	<div id="intro" class="row">
+
+		<div id="place-img" class="col-sm-3">
+			Click a marker to check the detail of the place
+		</div>
+		<div id="place-desc" class="col-sm-4">
+		</div>
+		<div id="place-reason" class="col-sm-5">
+		</div>
+	</div>
+
 	<select id="select-location" onchange="moveLocation(this)">
 		<option value="shibuya">Shibuya</option>
 		<option value="shinjuku">Shinjuku</option>
@@ -58,6 +69,7 @@
 <!-- build:js scripts/vendor.js -->
 <!-- bower:js -->
 <script src="/bower_components/jquery/dist/jquery.js"></script>
+<script src="/bower_components/elasticsearch/elasticsearch.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
